@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="/static/favicon.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/profile.css">
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            height: 100%;
+        }
+
+        .sidebar {
+            flex: 0 0 auto;
+            width: 250px;
+            background-color: #f2f2f2;
+        }
+
+        .center-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <nav>
+                <div class="sidebar-top">
+                    <a href="/profile" class="logo__wrapper">
+                        <img src="/static/images/logo.png" alt="Logo" class="logo">
+                        <img src="/static/images/logo-small.png" alt="Logo" class="logo-small">
+                    </a>
+                </div>
+                <div class="sidebar-links">
+                    <ul>
+                        <li>
+
+                            <a href="/profile" title="" class="tooltip active">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M5 12l-2 0l9 -9l9 9l-2 0"></path>
+                                    <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path>
+                                    <path d="M10 12h4v4h-4z"></path>
+                                </svg>
+                                <span class="link hide">Home</span>
+                                <span class="tooltip__content">Home</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/MyGroups" title="" class="tooltip">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="icon icon-tabler icons-tabler-outline icon-tabler-users-group">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                                    <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1" />
+                                    <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                                    <path d="M17 10h2a2 2 0 0 1 2 2v1" />
+                                    <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                                    <path d="M3 13v-1a2 2 0 0 1 2 -2h2" />
+                                </svg>
+                                <span class="link hide">My Groups</span>
+                                <span class="tooltip__content">My Groups</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/addGroup" title="" class="tooltip">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="icon icon-tabler icons-tabler-outline icon-tabler-user-plus">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                                    <path d="M16 19h6" />
+                                    <path d="M19 16v6" />
+                                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4" />
+                                </svg>
+                                <span class="link hide">Create Group</span>
+                                <span class="tooltip__content">Create Group</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" title="" class="tooltip" onclick="submitForm('/requests')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="icon icon-tabler icons-tabler-outline icon-tabler-clock-question">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M20.975 11.33a9 9 0 1 0 -5.717 9.06" />
+                                    <path d="M12 7v5l2 2" />
+                                    <path d="M19 22v.01" />
+                                    <path d="M19 19a2.003 2.003 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" />
+                                </svg>
+                                <span class="link hide">Pending Requests</span>
+                                <span class="tooltip__content">Pending Requests</span>
+                            </a>
+                            <form id="myForm" action="/requests" method="post" style="display: none;">
+                                <button type="submit">Pending Requests</button>
+                            </form>
+                        </li>
+
+                        <li>
+                            <a href="#" title="" class="tooltip" onclick="submitForm('/logout')">
+                                <div style="position: relative;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout"
+                                        width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                        stroke="currentColor" fill="none" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path
+                                            d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2">
+                                        </path>
+                                        <path d="M9 12h12l-3 -3"></path>
+                                        <path d="M18 15l3 -3"></path>
+                                    </svg>
+                                    <div class="notification"></div>
+                                </div>
+                                <span class="link hide">Logout</span>
+                                <span class="tooltip__content">Logout</span>
+                            </a>
+                            <form id="myForm" action="/logout" method="post" style="display: none;">
+                                <button type="submit">Logout</button>
+                            </form>
+                        </li>
+                        <li>
+                            <a href="/user" title="Settings" class="tooltip">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="icon icon-tabler icons-tabler-outline icon-tabler-settings">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path
+                                        d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
+                                    <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                                </svg>
+                                <span class="link hide">Settings</span>
+                                <span class="tooltip__content">Settings</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="sidebar-bottom hide">
+                    <img src="/static/images/diamond.png" alt="Diamond">
+                    <p>
+                        Welcome to Splitwise!
+                    </p>
+                    <button>
+                        Smart Sharing!
+                    </button>
+                </div>
+                <div class="expand-btn">
+                    <img src="/static/images/right-collapse.svg" alt="Left Collapse">
+                    <span class="hide">
+                        Collapse
+                    </span>
+                </div>
+            </nav>
+        </nav>
+
+        <div class="center-content">
+            <div class="profile">
+                <% for(let c of results){ %>
+                    <header class="profile__header">
+                        <div class="profile__highlight__wrapper">
+                            <div class="profile__highlight">
+                                <a href="/reminders">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="icon icon-tabler icons-tabler-outline icon-tabler-bell">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
+                                        <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
+                                    </svg>
+                                </a>
+
+                            </div>
+
+                        </div>
+                        <div class="profile__avatar">
+                            <img src="<%=c.profile_pic %>" loading="lazy" alt="Profile Picture">
+                        </div>
+                        <div class="profile__highlight__wrapper">
+                            <div class="profile__highlight">
+                                <a href="/paid_recv_transactions">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="icon icon-tabler icons-tabler-outline icon-tabler-history">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M12 8l0 4l2 2" />
+                                        <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />
+                                    </svg>
+                                </a>
+
+                            </div>
+                        </div>
+                    </header>
+                    <div class="profile__name">
+                        <h2>
+                            <%= c.Name %><img src="/static/images/verified.svg" alt="Verified Tick">
+                        </h2>
+                        <p>
+                            <%= c.Email %>
+                        </p>
+                        <% } %>
+                    </div>
+
+                    <main>
+                        <div class="tabs-wrapper">
+                            <ul class="tabs">
+                                <li class="active">
+                                    <a id="tab1" href="#">My Transactions</a>
+                                </li>
+
+                                <li id="active-bg"></li>
+                            </ul>
+                        </div>
+                        <div id="tab1-content" class="tab-content tab-content--active">
+
+
+                            <!-- Render Transactions here  -->
+                            <% if(joinedData.length==0|| joinedData.every(c=> c.totalAmount <= 0)){ %>
+                                    <h1 style="text-align: center;">No Payments to be made</h1>
+                                    <% } %>
+                                        <% for(let c of joinedData){ %>
+                                            <% if(c.totalAmount>0){ %>
+                                                <div class="entry-container"> <!-- Add the class here -->
+                                                    <div>
+                                                        <%= c.Name %>
+                                                    </div>
+                                                    <img src="<%= c.profile_pic %>">
+                                                    <div>Rs.<%= c.totalAmount %>
+                                                    </div>
+                                                    <div class="description-container">
+                                                        <% c.descriptions.forEach(function(description) { %>
+                                                            <div class="description-item">
+                                                                <%= description %>
+                                                            </div>
+                                                            <% }); %>
+                                                    </div>
+                                                    <form action="/pay" method="post">
+                                                        <input type="hidden" name="receiverid" value="<%= c.userId %>">
+                                                        <input type="hidden" name="Amount" value="<%= c.totalAmount %>">
+                                                        <button type="submit">Pay</button>
+                                                    </form>
+                                                </div>
+                                                <% } %>
+                                                    <% } %>
+                                                        <!-- Render Transactions here  -->
+
+                        </div>
+                    </main>
+                    <!-- <button class="btn btn--primary">
+                    Test Button
+                </button> -->
+
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/profile.js"></script>
+</body>
+
+</html>

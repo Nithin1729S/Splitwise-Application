@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>New Requests</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="/static/favicon.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/requests.css">
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            height: 100%;
+        }
+
+        .sidebar {
+            flex: 0 0 auto;
+            background-color: #ffffff;
+            position: fixed;
+        }
+
+        .center-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+
+        form {
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #272727;
+            margin-bottom: 50px;
+            /* Add some margin-bottom to create space */
+        }
+    </style>
+</head>
+
+<body class="collapsed">
+    <div class="container">
+        <nav class="sidebar">
+            <div class="sidebar-top">
+                <a href="/profile" class="logo__wrapper">
+                    <img src="/static/images/logo.png" alt="Logo" class="logo">
+                    <img src="/static/images/logo-small.png" alt="Logo" class="logo-small">
+                </a>
+            </div>
+            <div class="sidebar-links">
+                <ul>
+                    <li>
+
+                        <a href="/profile" title="" class="tooltip">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M5 12l-2 0l9 -9l9 9l-2 0"></path>
+                                <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path>
+                                <path d="M10 12h4v4h-4z"></path>
+                            </svg>
+                            <span class="link hide">Home</span>
+                            <span class="tooltip__content">Home</span>
+                        </a>
+                    </li>
+
+
+
+
+                    <li>
+                        <a href="/MyGroups" title="" class="tooltip">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-users-group">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                                <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1" />
+                                <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                                <path d="M17 10h2a2 2 0 0 1 2 2v1" />
+                                <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                                <path d="M3 13v-1a2 2 0 0 1 2 -2h2" />
+                            </svg>
+                            <span class="link hide">My Groups</span>
+                            <span class="tooltip__content">My Groups</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/addGroup" title="" class="tooltip">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-user-plus">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                                <path d="M16 19h6" />
+                                <path d="M19 16v6" />
+                                <path d="M6 21v-2a4 4 0 0 1 4 -4h4" />
+                            </svg>
+                            <span class="link hide">Create Group</span>
+                            <span class="tooltip__content">Create Group</span>
+                        </a>
+                    </li>
+
+
+
+                    <li>
+                        <a href="#" title="" class="tooltip active" onclick="submitForm('/requests')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-clock-question">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M20.975 11.33a9 9 0 1 0 -5.717 9.06" />
+                                <path d="M12 7v5l2 2" />
+                                <path d="M19 22v.01" />
+                                <path d="M19 19a2.003 2.003 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" />
+                            </svg>
+                            <span class="link hide">Pending Requests</span>
+                            <span class="tooltip__content">Pending Requests</span>
+                        </a>
+                        <form id="myForm" action="/requests" method="post" style="display: none;">
+                            <button type="submit">Pending Requests</button>
+                        </form>
+                    </li>
+
+
+
+                    <li>
+                        <a href="#" title="" class="tooltip" onclick="submitForm('/logout')">
+                            <div style="position: relative;">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout"
+                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path
+                                        d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2">
+                                    </path>
+                                    <path d="M9 12h12l-3 -3"></path>
+                                    <path d="M18 15l3 -3"></path>
+                                </svg>
+                                <div class="notification"></div>
+                            </div>
+                            <span class="link hide">Logout</span>
+                            <span class="tooltip__content">Logout</span>
+                        </a>
+                        <form id="myForm" action="/logout" method="post" style="display: none;">
+                            <button type="submit">Logout</button>
+                        </form>
+                    </li>
+                    <!-- <li>
+                  <a href="#reports" title="Test" class="tooltip">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-description" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                      <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                      <path d="M9 17h6"></path>
+                      <path d="M9 13h6"></path>
+                    </svg>
+                    <span class="link hide">Test</span>
+                    <span class="tooltip__content">Test</span>
+                  </a>
+                </li> -->
+
+                </ul>
+            </div>
+            <div class="sidebar-bottom hide">
+                <img src="/static/images/diamond.png" alt="Diamond">
+                <p>
+                    Welcome to Splitwise!
+                </p>
+                <button>
+                    Smart Sharing!
+                </button>
+            </div>
+            <div class="expand-btn" style="display: hidden;">
+                <img src="/static/images/right-collapse.svg" alt="Left Collapse">
+                <span class="hide">
+                    Collapse
+                </span>
+            </div>
+            <!-- Other sidebar content if needed -->
+        </nav>
+        <div class="center-content">
+            <h1>New Requests</h1>
+            <h1 style="text-align: center;">You have no new requests</h1>
+        </div>
+    </div>
+    <script src="/static/js/requests.js"></script>
+</body>
+
+</html>
